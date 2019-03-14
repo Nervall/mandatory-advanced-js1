@@ -1,61 +1,195 @@
+/* ========== MAIN SETTINGS ========== */
+
 * {
   box-sizing: border-box;
-  font-family: Roboto, sans-serif;
+ font-family: Roboto, sans-serif;
 }
 
 body {
-  background-image: url(./background.jpg);
+ background-image: url(./background.jpg);
 }
 
-.login-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 470px;
-  height: 250px;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.4)
+/* ========== SCROLL ========== */
+
+::-webkit-scrollbar {
+ width: 10px;
 }
 
-#login-text {
-  font-size: 20px;
-  color: rgb(82, 6, 6);
+::-webkit-scrollbar-track {
+ background: rgba(255, 255, 255, 0.1);
+}
+  
+::-webkit-scrollbar-thumb {
+ background: rgb(97, 38, 38);
+}
+
+::-webkit-scrollbar-thumb:hover {
+ background: rgb(97, 38, 38); 
+}
+
+/* ========== BUTTONS ========== */
+
+#login-button, #chat-button {
+ margin: 0 auto;
+ margin-top: 10px;
+ height: 30px;
+ color: white;
+ font-size: 12px;
+ border: 0;
+ background-color: rgb(107, 37, 37);
+ border-radius: 5px;
+ letter-spacing: 1px;
+ text-transform: uppercase;
+ cursor: pointer;
+ outline: 0;
 }
 
 #login-button {
-    margin: 0 auto;
-    margin-left: 10px;
-    margin-top: 10px;
-    width: 120px;
-    height: 30px;
-    color: white;
-    font-size: 12px;
-    border: 0;
-    background-color: rgb(107, 37, 37);
-    border-radius: 5px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    outline: 0;
+ margin-left: 10px;
+ width: 120px;
 }
 
-#login-button:hover {
-  background-color: rgb(97, 38, 38);
+#chat-button {
+ display: block;
+ width: 150px;
+}
+ 
+#login-button:hover, #chat-button:hover {
+ background-color: rgb(97, 24, 24);
 }
 
+/* ========== LOGIN ========== */
+
+.login-wrapper {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ width: 470px;
+ height: 250px;
+ transform: translate(-50%, -50%);
+ border-radius: 10px;
+ background-color: rgba(255, 255, 255, 0.4);
+ padding: 20px 40px;
+ }
+
+#login-header {
+  margin-bottom: 20px;
+  color: rgb(82, 6, 6);
+ }
+ 
+#login-text {
+ font-size: 18px;
+ color: rgb(82, 6, 6);
+}
+ 
 #login-input {
-  width: 250px;
-  height: 30px;
-  border: 0;
-  padding-left: 10px;
-  font-size: 16px;
-  border-radius: 5px;
+ width: 250px;
+ height: 30px;
+ border: 0;
+ font-size: 16px;
+ border-radius: 5px;
+ padding-left: 10px;
 }
-
+ 
 .login-message {
-  font-size: 12px;
-  color: red;
+ font-size: 12px;
+ color: red;
+ margin-top: 20px;
+ padding-left: 0;
+ padding: 0 auto;
+
+}
+ 
+/* ========== CHAT ========== */ 
+
+.chat {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
 }
 
+.chat-wrapper {
+ background-color: rgba(255, 255, 255, 0.4);
+ margin: 40px 0;
+ width: 500px;
+ border-radius: 20px;
+}
+
+.chat-box {
+ margin-top: 10px;
+ width: 95%;
+ height: 500px;
+ padding: 20px 40px 20px 20px;
+ word-break: break-all;
+ overflow-y: scroll;
+}
+
+.write-wrapper {
+ border-top: 1px dotted rgb(82, 6, 6);
+ margin-top: 30px;
+}
+.write-box {
+ display: block;
+ margin: 0 auto;
+ margin-top: 20px;
+ padding: 10px;
+ font-family: sans-serif;
+ font-size: 16px;
+ width: 75%;
+ height: 100px;
+ overflow-y: auto;
+ resize: vertical;
+ outline: none;
+ border-radius: 5px;
+ background-color: #fcfbf1;
+}
+
+#chat-header {
+ text-align: center;
+ margin: 40px 0 20px 0;
+ color: rgb(82, 6, 6);
+}
+
+li {
+ list-style-type: none;
+ margin-top: 20px;
+}
+
+.chat-userName {
+ font-size: 16px;
+ font-weight: bold;
+ padding-left: 5px;
+ color: rgb(82, 6, 6);
+}
+
+.chat-text {
+ margin-top: 5px;
+ font-size: 16px;
+ background-color: #fcfbf1;
+ padding: 1px 15px;
+ border-radius: 10px;
+}
+
+.chat-login-wrap {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.chat-name {
+  line-height: 50px;
+ }
+
+.chat-logoff {
+  margin-left: 7px;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(82, 6, 6);
+  color: white;
+  border-radius: 10px;
+  font-size: 12px;
+  padding-bottom: 3px;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}

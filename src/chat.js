@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import io from 'socket.io-client';
 import List from "./list.js";
 import ListItem from "./listItem.js";
-import './chat.css';
+import './App.css';
 import Linkify from 'linkifyjs/react';
 import {emojify} from 'react-emojione';
 
@@ -90,9 +90,10 @@ addMessage = () => {
 									onKeyDown= {this.enterKey }>
 				</textarea><br></br>
 				<button id="chat-button" onClick={ this.addMessage }>Send Message</button>
-				<div className="chat-name">Du är inloggad som <b> {this.props.user} </b>
+				<div className="chat-login-wrap">
+				<span className="chat-name">Du är inloggad som <b> {this.props.user} </b></span>
 					<button className="chat-logoff" title="logout" onClick={this.props.logOff}>x</button>
-				</div>
+					</div>
 				</div>
 				</div>
 			</div>
