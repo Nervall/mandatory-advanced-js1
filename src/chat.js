@@ -35,24 +35,23 @@ class Chat extends Component {
     this.socket.on('new_message', (data) => {
       this.setState({messages: [...this.state.messages, data]}, scrollBottom)
 		}); 
-} 
+	} 
 
-componentWillUnmount() {
+	componentWillUnmount() {
 		this.socket.disconnect();
 		this.socket = null;
-}
+	}
 
-addMessage = () => {
-	this.socket.emit('message', {
-		username: this.props.user,
-		content: this.state.text
-	 }, (response) => {
-			 console.log(response);
-			 if(response.status === 'success'){
-				this.setState({messages: [...this.state.messages, response.data.newMessage]}, scrollBottom)
-			}
-	 });
-	 document.querySelector('.write-box').value = '';
+	addMessage = () => {
+		this.socket.emit('message', {
+			username: this.props.user,
+			content: this.state.text
+		}, (response) => {
+					if (response.status === 'success'){
+					this.setState({messages: [...this.state.messages, response.data.newMessage]}, scrollBottom)
+				}
+		});
+		document.querySelector('.chat-message-textarea').value = '';
 	} 
 
 	handleText = (e) => {
@@ -60,7 +59,7 @@ addMessage = () => {
 	}
 
 	enterKey = (e) => {
-    if(e.keyCode === 13) {
+    if (e.keyCode === 13) {
       this.addMessage();
     }
   }
@@ -68,36 +67,36 @@ addMessage = () => {
 	render() {
 		return(
 			<div className="chat">
-			<div className="chat-wrapper">
-				<h2 id="chat-header">The world gr8test&#169; chat</h2>
-				<div className="chat-box"> 
-					<List className="chat-list">
-					{this.state.messages.map((data) => 
-					<ListItem key={ data.id }>
+				<div className="chat-message-wrapper">
+					<textarea className="chat-message-textarea" 
+										placeholder="Write your message..." 
+										minLength="1"
+										maxLength="200"
+										onChange={ this.handleText }
+										onKeyDown= {this.enterKey }>
+					</textarea><br></br>
+					<button id="chat-button" onClick={ this.addMessage }>Send Message</button>
+					<div className="chat-logoff-wrap">
+						<span className="chat-logoff-text">Du är inloggad som <b> {this.props.user} </b></span>
+						<button className="chat-logoff-button" title="logout" onClick={this.props.logOff}><p id="chat-logoff-x">x</p></button>
+					</div>
+				</div>
+				<div className="chat-wrapper">
+					<h2 id="chat-header">The world gr8test&#169; chat</h2>
+					<div className="chat-box"> 
+						<List className="chat-list">
+						{this.state.messages.map((data) => 
+						<ListItem key={ data.id }>
 						<div className="chat-content">
 							<div className="chat-userName">{ data.username }</div> 
 							<div className="chat-text">{ convertUrl(data.content) }</div>
 						</div>
-					</ListItem>)}
-					</List>
-				</div>
-				<div className="write-wrapper">
-				<textarea className="write-box" 
-									placeholder="Write your message..." 
-									minLength="1"
-									maxLength="200"
-									onChange={ this.handleText }
-									onKeyDown= {this.enterKey }>
-				</textarea><br></br>
-				<button id="chat-button" onClick={ this.addMessage }>Send Message</button>
-				<div className="chat-login-wrap">
-				<span className="chat-name">Du är inloggad som <b> {this.props.user} </b></span>
-					<button className="chat-logoff" title="logout" onClick={this.props.logOff}>x</button>
+						</ListItem>)}
+						</List>
 					</div>
-				</div>
+						<hr></hr>
 				</div>
 			</div>
-
 		)
 	}
 }

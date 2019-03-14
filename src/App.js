@@ -11,7 +11,7 @@ class App extends Component {
       user: '',
       message: '',
     };
-}   
+  }   
 
   checkUser = (e) => {
     e.preventDefault();
